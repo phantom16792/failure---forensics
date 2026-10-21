@@ -1,5 +1,10 @@
+// Uses VITE_API_URL in production, or falls back to local backend during development
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+export default API_BASE_URL;
+
 const j = async (url, opts = {}) => {
-  const r = await fetch('/api' + url, { headers: { 'Content-Type': 'application/json' }, ...opts })
+  const r = await fetch(API_BASE_URL + '/api' + url, { headers: { 'Content-Type': 'application/json' }, ...opts })
   if (!r.ok) throw new Error(await r.text())
   return r.json()
 }

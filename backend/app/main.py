@@ -15,6 +15,22 @@ app = FastAPI(title="FailureForensics", version="1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
+# Allow requests from your Vercel frontend URL and local dev servers
+origins = [
+    "https://https://failure-forensics.vercel.app/",  # Replace with your actual frontend Vercel URL
+    "http://localhost:5173",
+    "http://localhost:8080",
+    "*"  # Use "*" temporarily if you want to allow all origins during testing
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 class RunReq(BaseModel):
     text: str
     doc_id: Optional[str] = None

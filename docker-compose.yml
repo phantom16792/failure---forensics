@@ -24,7 +24,7 @@ services:
     environment:
       - PORT=8000
       - GEMINI_API_KEY=${GEMINI_API_KEY}
-      - DATABASE_URL=postgresql://user:password@db:5432/failure_forensics
+      - DATABASE_URL=postgresql://postgres:U$MR#7d.%/Kpj*2@db.oilbvuybfxtqntvkujcq.supabase.co:5432/postgres
 
   frontend:
     build:
